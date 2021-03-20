@@ -1,0 +1,2 @@
+# Spendee
+Spendee MAD Project
