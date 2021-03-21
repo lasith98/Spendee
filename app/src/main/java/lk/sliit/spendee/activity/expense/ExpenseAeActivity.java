@@ -1,10 +1,9 @@
-package lk.sliit.spendee.activity.income;
+package lk.sliit.spendee.activity.expense;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,20 +13,20 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import lk.sliit.spendee.R;
-import lk.sliit.spendee.model.IncomeModel;
-import lk.sliit.spendee.repository.IncomeRepository;
+import lk.sliit.spendee.model.ExpenseModel;
+import lk.sliit.spendee.repository.ExpenseRepository;
 
 import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
 
 /**
- * author: lasith hansana
+ * author: DULAJ DILSHAN
  * date: 3/19/2021
  * time: 10:32 PM
  */
-public class IncomeAeActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "IncomeAeActivity :";
-    private IncomeRepository incomeRepository;
-    private IncomeModel model;
+public class ExpenseAeActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "ExpenseAeActivity :";
+    private ExpenseRepository expenseRepository;
+    private ExpenseModel model;
     private EditText amountEditText;
     private EditText descriptionEditText;
     private EditText dateEditText;
@@ -36,28 +35,28 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_income_ae);
+        setContentView(R.layout.activity_expense_ae);
 
-        Button deleteButton = findViewById(R.id.incomeDeleteButton);
-        Button saveButton = findViewById(R.id.incomeSaveButton);
-        TextView titleTextView = findViewById(R.id.incomeAeTitle);
+        Button deleteButton = findViewById(R.id.expenseDeleteButton);
+        Button saveButton = findViewById(R.id.expenseSaveButton);
+        TextView titleTextView = findViewById(R.id.expenseAeTitle);
 
         saveButton.setOnClickListener(this);
         deleteButton.setOnClickListener(this);
 
-        amountEditText = findViewById(R.id.incomeAmountEditText);
-        descriptionEditText = findViewById(R.id.incomeDescriptionEditText);
+        amountEditText = findViewById(R.id.expenseAmountEditText);
+        descriptionEditText = findViewById(R.id.expenseDescriptionEditText);
         dateEditText = findViewById(R.id.incomeDateEditText);
-        incomeRepository = IncomeRepository.getInstance(this);
-        model = (IncomeModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
+        expenseRepository = ExpenseRepository.getInstance(this);
+        model = (ExpenseModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
         createPopupCalender();
 
         if (model.getId() == null) {
-            titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.add), getString(R.string.income)));
+            titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.add), getString(R.string.expenses)));
             deleteButton.setEnabled(false);
 
         } else {
-            titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.edit), getString(R.string.income)));
+            titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.edit), getString(R.string.expenses)));
             amountEditText.setText(String.valueOf(model.getAmount()));
             descriptionEditText.setText(model.getDescription());
             dateEditText.setText(model.getDate());
@@ -67,20 +66,20 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
 
-        if (view.getId() == R.id.incomeSaveButton) {
+        if (view.getId() == R.id.expenseSaveButton) {
             model.setDate(dateEditText.getText().toString());
             model.setDescription(descriptionEditText.getText().toString());
             model.setAmount(Double.parseDouble(amountEditText.getText().toString()));
             if (model.getId() == null) {
-                incomeRepository.save(model);
+                expenseRepository.save(model);
             } else {
-                incomeRepository.update(model);
+                expenseRepository.update(model);
             }
             finish();
 
         } else {
             new AlertDialog.Builder(this).setTitle("Spendee").setMessage("Do you want delete ?").setPositiveButton("Yes", (dialogInterface, i) -> {
-                this.incomeRepository.delete(model);
+                this.expenseRepository.delete(model);
                 dialogInterface.dismiss();
                 finish();
             }).setNegativeButton("Cancel", (dialogInterface, i) -> {
@@ -97,7 +96,7 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
         Calendar calendar = Calendar.getInstance();
         dateEditText.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    IncomeAeActivity.this, (view, year, month, dayOfMonth) -> {
+                    ExpenseAeActivity.this, (view, year, month, dayOfMonth) -> {
                 month = month + 1;
                 String date = dayOfMonth + "/" + month + "/" + year;
                 dateEditText.setText(date);

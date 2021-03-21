@@ -14,6 +14,7 @@ public class DatabaseConstraints {
      * Table names
      */
     public static final String INCOME_TABLE_NAME = "income";
+    public static final String EXPENSE_TABLE_NAME = "expense";
 
     /**
      * column names
@@ -31,6 +32,13 @@ public class DatabaseConstraints {
     public static final String[] DATABASE_TABLES = {
             // create income table
             new TableBuilder.Builder(INCOME_TABLE_NAME)
+                    .integerColumn(ID_COLUMN)
+                    .defineColumnHasPrimaryKey()
+                    .setAutoincrement().and()
+                    .floatColumn(AMOUNT_COLUMN).and()
+                    .textColumn(DATE_COLUMN).and()
+                    .textColumn(DESCRIPTION_COLUMN).build(),
+            new TableBuilder.Builder(EXPENSE_TABLE_NAME)
                     .integerColumn(ID_COLUMN)
                     .defineColumnHasPrimaryKey()
                     .setAutoincrement().and()
