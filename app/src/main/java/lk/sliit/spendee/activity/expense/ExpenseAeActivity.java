@@ -46,7 +46,7 @@ public class ExpenseAeActivity extends AppCompatActivity implements View.OnClick
 
         amountEditText = findViewById(R.id.expenseAmountEditText);
         descriptionEditText = findViewById(R.id.expenseDescriptionEditText);
-        dateEditText = findViewById(R.id.incomeDateEditText);
+        dateEditText = findViewById(R.id.expensesDateEditText);
         expenseRepository = ExpenseRepository.getInstance(this);
         model = (ExpenseModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
         createPopupCalender();

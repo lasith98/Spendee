@@ -58,7 +58,7 @@
             android:padding="12.5dp" />
 
         <EditText
-            android:id="@+id/expenseDateEditText"
+            android:id="@+id/expensesDateEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
