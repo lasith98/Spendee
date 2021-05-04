@@ -3,15 +3,12 @@ package lk.sliit.spendee.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 
 import lk.sliit.spendee.R;
-import lk.sliit.spendee.activity.expenses.ExpensesActivity;
-import lk.sliit.spendee.activity.goal.GoalActivity;
 import lk.sliit.spendee.activity.income.IncomeActivity;
 /**
  * author: Lasith Hansana
@@ -53,12 +50,17 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.income:
                 startIntent(IncomeActivity.class);
+                break;
+            case R.id.investment:
+                startIntent(InvestmentActivity.class);
+                break;
+            case R.id.setting:
+                startIntent(SettingActivity.class);
                 break;
 
             case R.id.expenses:
