@@ -14,6 +14,7 @@ public class DatabaseConstraints {
      * Table names
      */
     public static final String INCOME_TABLE_NAME = "income";
+    public static final String GOAL_TABLE_NAME = "goal";
 
     /**
      * column names
@@ -37,6 +38,15 @@ public class DatabaseConstraints {
                     .floatColumn(AMOUNT_COLUMN).and()
                     .textColumn(DATE_COLUMN).and()
                     .textColumn(DESCRIPTION_COLUMN).build(),
+            // create goal table
+            new TableBuilder.Builder(GOAL_TABLE_NAME)
+                    .integerColumn(ID_COLUMN)
+                    .defineColumnHasPrimaryKey()
+                    .setAutoincrement().and()
+                    .floatColumn(AMOUNT_COLUMN).and()
+                    .textColumn(DATE_COLUMN).and()
+                    .textColumn(DESCRIPTION_COLUMN).build(),
+
 
     };
 
