@@ -3,16 +3,14 @@ package lk.sliit.spendee.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 
 import lk.sliit.spendee.R;
-import lk.sliit.spendee.activity.goal.GoalActivity;
+import lk.sliit.spendee.activity.expenses.ExpensesActivity;
 import lk.sliit.spendee.activity.income.IncomeActivity;
-
 /**
  * author: Lasith Hansana
  * date: 3/19/2021
@@ -59,6 +57,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.income:
                 startIntent(IncomeActivity.class);
+                break;
+
+            case R.id.expenses:
+                startIntent(ExpensesActivity.class);
                 break;
             case R.id.setting:
                 startIntent(SettingActivity.class);
