@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Spendee">
-        <activity android:name=".activity.DashboardActivity"/>
+        <activity android:name=".activity.saving.SavingAeActivity"></activity>
+        <activity android:name=".activity.saving.SavingActivity" />
+        <activity android:name=".activity.income.saving.SavingActivity" />
+        <activity android:name=".activity.DashboardActivity" />
         <activity android:name=".activity.income.IncomeAeActivity" />
         <activity android:name=".activity.income.IncomeActivity" />
         <activity android:name=".MainActivity">
