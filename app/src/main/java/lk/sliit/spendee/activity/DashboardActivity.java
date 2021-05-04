@@ -68,19 +68,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.setting:
                 startIntent(SettingActivity.class);
                 break;
-            case R.id.investment:
-                startIntent(InvestmentActivity.class);
-                break;
-            case R.id.setting:
-                startIntent(SettingActivity.class);
-                break;
-
             case R.id.expenses:
                 startIntent(ExpensesActivity.class);
-                break;
-            case R.id.setting:
-                startIntent(SettingActivity.class);
-                break;
             case R.id.goal:
                 startIntent(GoalActivity.class);
                 break;

@@ -19,8 +19,6 @@ public class DatabaseConstraints {
     public static final String INVESTMENT_TABLE_NAME = "investment";
     public static final String SETTING_TABLE_NAME = "setting";
     public static final String GOAL_TABLE_NAME = "goal";
-    public static final String INVESTMENT_TABLE_NAME = "investment";
-    public static final String SETTING_TABLE_NAME = "setting";
 
     /**
      * column names
