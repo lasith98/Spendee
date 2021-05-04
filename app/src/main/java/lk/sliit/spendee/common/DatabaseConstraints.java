@@ -10,6 +10,8 @@ import lk.sliit.spendee.util.TableBuilder;
  */
 public class DatabaseConstraints {
     public static final String DATABASE_NAME = "spendee.db";
+    public static final String EXPENSES_TABLE_NAME ="expenses";
+
     /**
      * Table names
      */
@@ -31,6 +33,14 @@ public class DatabaseConstraints {
     public static final String[] DATABASE_TABLES = {
             // create income table
             new TableBuilder.Builder(INCOME_TABLE_NAME)
+                    .integerColumn(ID_COLUMN)
+                    .defineColumnHasPrimaryKey()
+                    .setAutoincrement().and()
+                    .floatColumn(AMOUNT_COLUMN).and()
+                    .textColumn(DATE_COLUMN).and()
+                    .textColumn(DESCRIPTION_COLUMN).build(),
+
+            new TableBuilder.Builder(EXPENSES_TABLE_NAME)
                     .integerColumn(ID_COLUMN)
                     .defineColumnHasPrimaryKey()
                     .setAutoincrement().and()
