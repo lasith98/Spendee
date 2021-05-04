@@ -45,6 +45,7 @@
         android:paddingStart="25dp"
         android:paddingEnd="25dp">
         <EditText
+            android:id="@+id/txt1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -57,6 +58,7 @@
             android:textAlignment="center" />
 
         <EditText
+            android:id="@+id/txt2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -69,6 +71,7 @@
             android:textAlignment="center" />
 
         <EditText
+            android:id="@+id/txt3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -81,6 +84,7 @@
             android:textAlignment="center" />
 
         <EditText
+            android:id="@+id/txt5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

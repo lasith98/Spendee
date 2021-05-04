@@ -16,6 +16,9 @@ import lk.sliit.spendee.activity.income.IncomeActivity;
 import lk.sliit.spendee.activity.investment.InvestmentActivity;
 import lk.sliit.spendee.activity.investment.InvestmentAeActivity;
 
+import lk.sliit.spendee.activity.saving.SavingActivity;
+import lk.sliit.spendee.activity.saving.SavingAeActivity;
+
 /**
  * author: Lasith Hansana
  * date: 3/19/2021
@@ -72,6 +75,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 startIntent(ExpensesActivity.class);
             case R.id.goal:
                 startIntent(GoalActivity.class);
+                break;
+            case R.id.saving:
+                startIntent(SavingActivity.class);
                 break;
         }
     }

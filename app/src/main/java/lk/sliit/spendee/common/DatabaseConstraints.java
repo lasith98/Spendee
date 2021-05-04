@@ -19,6 +19,7 @@ public class DatabaseConstraints {
     public static final String INVESTMENT_TABLE_NAME = "investment";
     public static final String SETTING_TABLE_NAME = "setting";
     public static final String GOAL_TABLE_NAME = "goal";
+    public static final String SAVING_TABLE_NAME = "saving";
 
     /**
      * column names
@@ -101,6 +102,16 @@ public class DatabaseConstraints {
                     .floatColumn(INVESTMENT_COLUMN).and()
                     .floatColumn(EXPENSE_COLUMN).and()
                     .floatColumn(GOAL_COLUMN).build(),
+
+            // create saving table
+            new TableBuilder.Builder(SAVING_TABLE_NAME)
+                    .integerColumn(ID_COLUMN)
+                    .defineColumnHasPrimaryKey()
+                    .setAutoincrement().and()
+                    .floatColumn(AMOUNT_COLUMN).and()
+                    .textColumn(DATE_COLUMN).and()
+                    .textColumn(DESCRIPTION_COLUMN).build(),
+
 
     };
 

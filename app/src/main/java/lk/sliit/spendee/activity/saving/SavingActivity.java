@@ -30,6 +30,7 @@ public class SavingActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_saving);
         savingRepository = SavingRepository.getInstance(this);
         ImageView add = findViewById(R.id.addSaving);
+        ImageView add = findViewById(R.id.saving);
         add.setOnClickListener(this);
         listView = findViewById(R.id.savingListView);
         listView.setOnItemClickListener(this);
