@@ -73,6 +73,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.expenses:
                 startIntent(ExpensesActivity.class);
+                break;
             case R.id.goal:
                 startIntent(GoalActivity.class);
                 break;

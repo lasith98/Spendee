@@ -48,11 +48,11 @@ public class ExpensesAeActivity extends AppCompatActivity implements View.OnClic
         createPopupCalender();
 
         if (model.getId() == null) {
-            titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.add), getString(R.string.income)));
+            titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.add), getString(R.string.expenses)));
             deleteButton.setEnabled(false);
 
         } else {
-            titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.edit), getString(R.string.income)));
+            titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.edit), getString(R.string.expenses)));
             amountEditText.setText(String.valueOf(model.getAmount()));
             descriptionEditText.setText(model.getDescription());
             dateEditText.setText(model.getDate());

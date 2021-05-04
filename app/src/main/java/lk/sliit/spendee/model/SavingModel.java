@@ -53,7 +53,7 @@ public class SavingModel extends Model<Long> implements Serializable {
 
     @Override
     public Object mapToObject(Cursor cursor) {
-        IncomeModel object = new IncomeModel();
+        SavingModel object = new SavingModel();
         object.setId(cursor.getLong(0));
         object.setAmount(cursor.getDouble(1));
         object.setDate(cursor.getString(2));
