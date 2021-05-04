@@ -10,6 +10,9 @@ import android.view.View;
 
 import lk.sliit.spendee.R;
 import lk.sliit.spendee.activity.income.IncomeActivity;
+import lk.sliit.spendee.activity.investment.InvestmentActivity;
+import lk.sliit.spendee.activity.investment.InvestmentAeActivity;
+
 /**
  * author: Lasith Hansana
  * date: 3/19/2021
@@ -55,6 +58,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.income:
                 startIntent(IncomeActivity.class);
+                break;
+            case R.id.investment:
+                startIntent(InvestmentActivity.class);
+                break;
+            case R.id.setting:
+                startIntent(SettingActivity.class);
                 break;
         }
     }
