@@ -3,6 +3,7 @@ package lk.sliit.spendee.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.View;
 
 import lk.sliit.spendee.R;
 import lk.sliit.spendee.activity.expenses.ExpensesActivity;
+import lk.sliit.spendee.activity.goal.GoalActivity;
 import lk.sliit.spendee.activity.income.IncomeActivity;
 /**
  * author: Lasith Hansana
