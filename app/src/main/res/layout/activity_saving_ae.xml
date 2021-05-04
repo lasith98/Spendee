@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.saving.SavingAeActivity">
+
+    <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="150dp"
+       android:layout_marginBottom="20dp"
+       android:background="@drawable/header_background"
+       android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/savingAeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="saving"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/savingAmountEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit_text_shep"
+        android:hint="@string/saving"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:padding="12.5dp" />
+
+    <EditText
+        android:id="@+id/savingDescriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit_text_shep"
+        android:hint="@string/description"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="12.5dp" />
+
+
+    <EditText
+        android:id="@+id/savingDateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit_text_shep"
+        android:hint="@string/date"
+        android:importantForAutofill="no"
+        android:focusableInTouchMode="false"
+        android:inputType="date"
+        android:drawableEnd="@drawable/ic_date"
+        android:padding="12.5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/savingSaveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="1"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:background="@drawable/save_button"
+        tools:ignore="ButtonStyle" />
+    <Button
+        android:id="@+id/savingDeleteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:text="@string/delete"
+        android:background="@drawable/delete_button"
+        tools:ignore="ButtonStyle" />
+
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
