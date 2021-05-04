@@ -9,7 +9,10 @@ import android.view.View;
 
 
 import lk.sliit.spendee.R;
+import lk.sliit.spendee.activity.expenses.ExpensesActivity;
+import lk.sliit.spendee.activity.goal.GoalActivity;
 import lk.sliit.spendee.activity.income.IncomeActivity;
+
 /**
  * author: Lasith Hansana
  * date: 3/19/2021
