@@ -2,6 +2,7 @@ package lk.sliit.spendee.activity.income;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -31,6 +33,7 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
     private EditText amountEditText;
     private EditText descriptionEditText;
     private EditText dateEditText;
+    private TextView totalIncome;
 
 
     @Override
@@ -41,7 +44,7 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
         Button deleteButton = findViewById(R.id.incomeDeleteButton);
         Button saveButton = findViewById(R.id.incomeSaveButton);
         TextView titleTextView = findViewById(R.id.incomeAeTitle);
-
+        titleTextView = findViewById(R.id.totalIncome);
         saveButton.setOnClickListener(this);
         deleteButton.setOnClickListener(this);
 
@@ -51,6 +54,7 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
         incomeRepository = IncomeRepository.getInstance(this);
         model = (IncomeModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
         createPopupCalender();
+        totalIncome.setText("Total : " + incomeRepository.findTotalIncome());
 
         if (model.getId() == null) {
             titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.add), getString(R.string.income)));
@@ -68,6 +72,16 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
 
         if (view.getId() == R.id.incomeSaveButton) {
+            if (amountEditText.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Can't blank or characters in amount  amount", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (dateEditText.getText().toString().isEmpty() || dateEditText.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Can't blank description or date", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             model.setDate(dateEditText.getText().toString());
             model.setDescription(descriptionEditText.getText().toString());
             model.setAmount(Double.parseDouble(amountEditText.getText().toString()));
