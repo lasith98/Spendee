@@ -36,15 +36,14 @@ public class SettingActivity extends AppCompatActivity {
         investmentRateEditText = (EditText) findViewById(R.id.investmentRateEditText);
         expensesRateEditText = (EditText) findViewById(R.id.expensesRateEditText);
         goalRateEditText = (EditText) findViewById(R.id.goalRateEditText);
-        if (settingRepository.findByAll().size() == 0) {
+        settingModel = settingRepository.lastRecode();
+        if (settingModel == null) {
             settingModel = new SettingModel();
-        } else {
-            settingModel = settingRepository.lastRecode();
-            savingRateEditText.setText(String.valueOf(settingModel.getSavingRate()));
-            investmentRateEditText.setText(String.valueOf(settingModel.getInvestmentRate()));
-            expensesRateEditText.setText(String.valueOf(settingModel.getExpenseRate()));
-            goalRateEditText.setText(String.valueOf(settingModel.getGoalRate()));
         }
+        savingRateEditText.setText(String.valueOf(settingModel.getSavingRate()));
+        investmentRateEditText.setText(String.valueOf(settingModel.getInvestmentRate()));
+        expensesRateEditText.setText(String.valueOf(settingModel.getExpenseRate()));
+        goalRateEditText.setText(String.valueOf(settingModel.getGoalRate()));
         incomeSaveButton = (Button) findViewById(R.id.incomeSaveButton);
         Toast toast = Toast.makeText(this, "Save setting", Toast.LENGTH_LONG);
         incomeSaveButton.setOnClickListener(new View.OnClickListener() {

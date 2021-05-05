@@ -17,7 +17,12 @@ import java.util.Calendar;
 
 import lk.sliit.spendee.R;
 import lk.sliit.spendee.model.IncomeModel;
+import lk.sliit.spendee.model.RemainsModel;
+import lk.sliit.spendee.model.SettingModel;
 import lk.sliit.spendee.repository.IncomeRepository;
+import lk.sliit.spendee.repository.RemainsRepository;
+import lk.sliit.spendee.repository.SettingRepository;
+import lk.sliit.spendee.service.IncomeDistributionService;
 
 import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
 
@@ -29,11 +34,13 @@ import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
 public class IncomeAeActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "IncomeAeActivity :";
     private IncomeRepository incomeRepository;
+    private SettingRepository settingRepository;
+    private RemainsRepository remainsRepository;
     private IncomeModel model;
     private EditText amountEditText;
     private EditText descriptionEditText;
     private EditText dateEditText;
-    private TextView totalIncome;
+
 
 
     @Override
@@ -44,7 +51,6 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
         Button deleteButton = findViewById(R.id.incomeDeleteButton);
         Button saveButton = findViewById(R.id.incomeSaveButton);
         TextView titleTextView = findViewById(R.id.incomeAeTitle);
-        titleTextView = findViewById(R.id.totalIncome);
         saveButton.setOnClickListener(this);
         deleteButton.setOnClickListener(this);
 
@@ -52,9 +58,12 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
         descriptionEditText = findViewById(R.id.incomeDescriptionEditText);
         dateEditText = findViewById(R.id.incomeDateEditText);
         incomeRepository = IncomeRepository.getInstance(this);
+        settingRepository = SettingRepository.getInstance(this);
+        remainsRepository = RemainsRepository.getInstance(this);
         model = (IncomeModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
         createPopupCalender();
-        totalIncome.setText("Total : " + incomeRepository.findTotalIncome());
+
+
 
         if (model.getId() == null) {
             titleTextView.setText(String.format(getString(R.string.AeTitle), getString(R.string.add), getString(R.string.income)));
@@ -87,6 +96,27 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
             model.setAmount(Double.parseDouble(amountEditText.getText().toString()));
             if (model.getId() == null) {
                 incomeRepository.save(model);
+
+                SettingModel settingModel;
+                if (settingRepository.findByAll().size() == 0) {
+                    settingModel = new SettingModel();
+                } else {
+                    settingModel = settingRepository.lastRecode();
+                }
+                IncomeDistributionService incomeDistributionService = new IncomeDistributionService(model.getAmount(), settingModel);
+
+                RemainsModel remainsModel;
+                if (remainsRepository.findByAll().size() == 0) {
+                    remainsModel = new RemainsModel();
+                } else {
+                    remainsModel = remainsRepository.lastRecode();
+                }
+
+                remainsModel.setGoal(remainsModel.getGoal() + incomeDistributionService.goalAmount());
+                remainsModel.setSaving(remainsModel.getSaving() + incomeDistributionService.savingAmount());
+                remainsModel.setExpenses(remainsModel.getExpenses() + incomeDistributionService.expensesAmount());
+                remainsModel.setInvestment(remainsModel.getInvestment() + incomeDistributionService.investmentAmount());
+                remainsRepository.save(remainsModel);
             } else {
                 incomeRepository.update(model);
             }
