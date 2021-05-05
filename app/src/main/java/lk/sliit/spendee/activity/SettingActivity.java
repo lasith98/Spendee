@@ -15,15 +15,13 @@ import lk.sliit.spendee.repository.Repository;
 
 public class SettingActivity extends AppCompatActivity {
 
-    double savingRate, investmentRate, expenseRate, goalRate;
-
     EditText savingRateEditText;
     EditText investmentRateEditText;
     EditText expensesRateEditText;
     EditText goalRateEditText;
 
     Button incomeSaveButton;
-
+    SettingModel settingModel;
     SettingRepository settingRepository;
 
 
@@ -38,23 +36,20 @@ public class SettingActivity extends AppCompatActivity {
         investmentRateEditText = (EditText) findViewById(R.id.investmentRateEditText);
         expensesRateEditText = (EditText) findViewById(R.id.expensesRateEditText);
         goalRateEditText = (EditText) findViewById(R.id.goalRateEditText);
-
+        if (settingRepository.findByAll().size() == 0) {
+            settingModel = new SettingModel();
+        } else {
+            settingModel = settingRepository.lastRecode();
+            savingRateEditText.setText(String.valueOf(settingModel.getSavingRate()));
+            investmentRateEditText.setText(String.valueOf(settingModel.getInvestmentRate()));
+            expensesRateEditText.setText(String.valueOf(settingModel.getExpenseRate()));
+            goalRateEditText.setText(String.valueOf(settingModel.getGoalRate()));
+        }
         incomeSaveButton = (Button) findViewById(R.id.incomeSaveButton);
+        Toast toast = Toast.makeText(this, "Save setting", Toast.LENGTH_LONG);
         incomeSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                savingRate = Double.valueOf(savingRateEditText.getText().toString());
-                investmentRate = Double.valueOf(investmentRateEditText.getText().toString());
-                expenseRate = Double.valueOf(expensesRateEditText.getText().toString());
-                goalRate = Double.valueOf(goalRateEditText.getText().toString());
-
-                SettingModel settingModel;
-                if (settingRepository.findByAll().size() == 0) {
-                    settingModel = new SettingModel();
-                } else {
-                    settingModel = settingRepository.lastRecode();
-                }
 
                 settingModel.setSavingRate(Double.parseDouble(savingRateEditText.getText().toString()));
                 settingModel.setInvestmentRate(Double.parseDouble(investmentRateEditText.getText().toString()));
@@ -65,6 +60,7 @@ public class SettingActivity extends AppCompatActivity {
                 } else {
                     settingRepository.update(settingModel);
                 }
+                toast.show();
 
             }
 
