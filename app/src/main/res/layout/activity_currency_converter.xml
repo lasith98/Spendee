@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.income.IncomeActivity">
-
+    tools:context=".activity.CurrencyConverterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,17 +14,19 @@
         android:background="@drawable/header_background"
         android:orientation="vertical">
 
+        >
+
+
         <TextView
-            android:id="@+id/incomeAeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="@string/setting"
+            android:text="Currency Converter"
             android:textColor="@color/white"
             android:textSize="25sp" />
-    </LinearLayout>
 
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,48 +36,67 @@
         android:layout_marginEnd="20dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter the Amount" />
+
         <EditText
-            android:id="@+id/savingRateEditText"
+            android:id="@+id/txtamount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/edit_text_shep"
-            android:hint="@string/savingRate"
+
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
             android:padding="12.5dp" />
 
-        <EditText
-            android:id="@+id/investmentRateEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_shep"
-            android:hint="@string/investmentRate"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
-            android:padding="12.5dp" />
 
-        <EditText
-            android:id="@+id/expensesRateEditText"
-            android:layout_width="match_parent"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From" />
+
+
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_shep"
-            android:hint="@string/expenseRate"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
-            android:padding="12.5dp" />
-        <EditText
-            android:id="@+id/goalRateEditText"
-            android:layout_width="match_parent"
+            android:ems="10"
+            android:id="@+id/spfrom" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_shep"
-            android:hint="@string/goalRate"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
-            android:padding="12.5dp" />
+            android:text="To" />
+
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/spto" />
 
     </LinearLayout>
 
@@ -87,19 +107,20 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/incomeSaveButton"
+            android:id="@+id/btn1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_weight="1"
-            android:text="@string/save"
+            android:text="Convert"
             android:textColor="@color/white"
             android:background="@drawable/save_button"
             tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+
 
 
 
     </LinearLayout>
-
-</LinearLayout>

@@ -10,17 +10,18 @@ import lk.sliit.spendee.util.TableBuilder;
  */
 public class DatabaseConstraints {
     public static final String DATABASE_NAME = "spendee.db";
-    public static final String EXPENSES_TABLE_NAME ="expenses";
 
     /**
      * Table names
      */
     public static final String INCOME_TABLE_NAME = "income";
     public static final String INVESTMENT_TABLE_NAME = "investment";
+    public static final String EXPENSES_TABLE_NAME = "expenses";
     public static final String SETTING_TABLE_NAME = "setting";
     public static final String GOAL_TABLE_NAME = "goal";
     public static final String SAVING_TABLE_NAME = "saving";
     public static final String ACCOUNT_TABLE_NAME = "account";
+    public static final String REMAINS_TABLE_NAME = "remains";
 
     /**
      * column names
@@ -33,7 +34,6 @@ public class DatabaseConstraints {
     public static final String INVESTMENT_COLUMN = "investmentRate";
     public static final String EXPENSE_COLUMN = "expenseRate";
     public static final String GOAL_COLUMN = "goalRate";
-    public static final String PIN_COLUMN = "pin";
 
     /**
      * column index
@@ -58,7 +58,7 @@ public class DatabaseConstraints {
                     .textColumn(DATE_COLUMN).and()
                     .textColumn(DESCRIPTION_COLUMN).build(),
 
-
+            // create expenses table
             new TableBuilder.Builder(EXPENSES_TABLE_NAME)
                     .integerColumn(ID_COLUMN)
                     .defineColumnHasPrimaryKey()
@@ -69,12 +69,12 @@ public class DatabaseConstraints {
 
             // create investment table
             new TableBuilder.Builder(INVESTMENT_TABLE_NAME)
-                     .integerColumn(ID_COLUMN)
-                     .defineColumnHasPrimaryKey()
-                     .setAutoincrement().and()
-                     .floatColumn(AMOUNT_COLUMN).and()
-                     .textColumn(DATE_COLUMN).and()
-                     .textColumn(DESCRIPTION_COLUMN).build(),
+                    .integerColumn(ID_COLUMN)
+                    .defineColumnHasPrimaryKey()
+                    .setAutoincrement().and()
+                    .floatColumn(AMOUNT_COLUMN).and()
+                    .textColumn(DATE_COLUMN).and()
+                    .textColumn(DESCRIPTION_COLUMN).build(),
 
             //create setting table
             new TableBuilder.Builder(SETTING_TABLE_NAME)
@@ -110,9 +110,10 @@ public class DatabaseConstraints {
                     .integerColumn(ID_COLUMN)
                     .defineColumnHasPrimaryKey()
                     .setAutoincrement().and()
-                    .floatColumn(AMOUNT_COLUMN).and()
-                    .textColumn(DATE_COLUMN).and()
-                    .textColumn(DESCRIPTION_COLUMN).build(),
+                    .floatColumn(INVESTMENT_REMAINS_COLUMN).and()
+                    .floatColumn(EXPENSES_REMAINS_COLUMN).and()
+                    .floatColumn(SAVING_REMAINS_COLUMN).and()
+                    .floatColumn(GOAL_REMAINS_COLUMN).build()
 
             // create account table
             new TableBuilder.Builder(ACCOUNT_TABLE_NAME)

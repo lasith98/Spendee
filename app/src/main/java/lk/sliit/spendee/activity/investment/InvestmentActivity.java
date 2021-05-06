@@ -37,8 +37,6 @@ public class InvestmentActivity extends AppCompatActivity implements View.OnClic
         Intent intent = new Intent(this, InvestmentAeActivity.class);
         intent.putExtra(EXTRA_OBJECT_NAME, new InvestmentModel());
         startActivity(intent);
-
-
     }
 
     @Override

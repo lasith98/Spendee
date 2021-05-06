@@ -7,18 +7,16 @@ import java.io.Serializable;
 
 public class SettingModel extends Model<Long> implements Serializable {
 
-    private double savingRate;
-    private double investmentRate;
-    private double expenseRate;
-    private double goalRate;
+    private double savingRate = 25.0;
+    private double investmentRate = 25.0;
+    private double expenseRate = 25.0;
+    private double goalRate = 25.0;
 
     public SettingModel() {
 
     }
 
-    public double getSavingRate() {
-        return savingRate;
-    }
+    public double getSavingRate() { return savingRate; }
 
     public void setSavingRate(double savingRate) {
         this.savingRate = savingRate;
@@ -61,10 +59,11 @@ public class SettingModel extends Model<Long> implements Serializable {
     @Override
     public Object mapToObject(Cursor cursor) {
         SettingModel object = new SettingModel();
-        object.setSavingRate(cursor.getDouble(0));
-        object.setInvestmentRate(cursor.getDouble(1));
-        object.setExpenseRate(cursor.getDouble(2));
-        object.setGoalRate(cursor.getDouble(3));
+        object.setId(cursor.getLong(0));
+        object.setSavingRate(cursor.getDouble(1));
+        object.setInvestmentRate(cursor.getDouble(2));
+        object.setExpenseRate(cursor.getDouble(3));
+        object.setGoalRate(cursor.getDouble(4));
         return object;
     }
 
@@ -75,6 +74,7 @@ public class SettingModel extends Model<Long> implements Serializable {
                 ", investmentRate='" + investmentRate + '\'' +
                 ", expenseRate='" + expenseRate + '\'' +
                 ", goalRate=" + goalRate +
+                ", id=" + id +
                 '}';
     }
 }
