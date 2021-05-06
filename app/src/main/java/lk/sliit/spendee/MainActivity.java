@@ -87,12 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<AccountModel> list = accountRepository.findByAll();
         if (list.size() == 1) {
             entered = true;
-//           String pin = String.valueOf(list.get(0).getPin());
-//           text1.setText(String.valueOf(pin.charAt(0)));
-//           text2.setText(String.valueOf(pin.charAt(1)));
-//           text3.setText(String.valueOf(pin.charAt(2)));
-//           text4.setText(String.valueOf(pin.charAt(3)));
             model = list.get(0);
+        }else{
+            model = new AccountModel();
         }
     }
 }
