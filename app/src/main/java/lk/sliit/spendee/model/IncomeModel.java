@@ -5,6 +5,10 @@ import android.database.Cursor;
 
 import java.io.Serializable;
 
+import static lk.sliit.spendee.common.DatabaseConstraints.AMOUNT_COLUMN;
+import static lk.sliit.spendee.common.DatabaseConstraints.DATE_COLUMN;
+import static lk.sliit.spendee.common.DatabaseConstraints.DESCRIPTION_COLUMN;
+
 /**
  * author: Lasith Hansana
  * date: 3/19/2021
@@ -46,9 +50,9 @@ public class IncomeModel extends Model<Long> implements Serializable {
     @Override
     public ContentValues toContentValue() {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("amount", amount);
-        contentValues.put("description", description);
-        contentValues.put("date", date);
+        contentValues.put(AMOUNT_COLUMN, amount);
+        contentValues.put(DESCRIPTION_COLUMN, description);
+        contentValues.put(DATE_COLUMN, date);
         return contentValues;
     }
 
