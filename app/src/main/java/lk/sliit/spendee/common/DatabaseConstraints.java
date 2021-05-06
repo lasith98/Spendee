@@ -20,6 +20,7 @@ public class DatabaseConstraints {
     public static final String SETTING_TABLE_NAME = "setting";
     public static final String GOAL_TABLE_NAME = "goal";
     public static final String SAVING_TABLE_NAME = "saving";
+    public static final String ACCOUNT_TABLE_NAME = "account";
 
     /**
      * column names
@@ -32,6 +33,7 @@ public class DatabaseConstraints {
     public static final String INVESTMENT_COLUMN = "investmentRate";
     public static final String EXPENSE_COLUMN = "expenseRate";
     public static final String GOAL_COLUMN = "goalRate";
+    public static final String PIN_COLUMN = "pin";
 
     /**
      * column index
@@ -112,7 +114,12 @@ public class DatabaseConstraints {
                     .textColumn(DATE_COLUMN).and()
                     .textColumn(DESCRIPTION_COLUMN).build(),
 
-
+            // create account table
+            new TableBuilder.Builder(ACCOUNT_TABLE_NAME)
+                    .integerColumn(ID_COLUMN)
+                    .defineColumnHasPrimaryKey()
+                    .setAutoincrement().and()
+                    .integerColumn(PIN_COLUMN).build(),
     };
 
 }
