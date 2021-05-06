@@ -20,6 +20,7 @@ public class DatabaseConstraints {
     public static final String SETTING_TABLE_NAME = "setting";
     public static final String GOAL_TABLE_NAME = "goal";
     public static final String SAVING_TABLE_NAME = "saving";
+    public static final String ACCOUNT_TABLE_NAME = "account";
     public static final String REMAINS_TABLE_NAME = "remains";
 
     /**
@@ -33,11 +34,6 @@ public class DatabaseConstraints {
     public static final String INVESTMENT_COLUMN = "investmentRate";
     public static final String EXPENSE_COLUMN = "expenseRate";
     public static final String GOAL_COLUMN = "goalRate";
-
-    public static final String INVESTMENT_REMAINS_COLUMN = "investment";
-    public static final String GOAL_REMAINS_COLUMN = "goal";
-    public static final String SAVING_REMAINS_COLUMN = "saving";
-    public static final String EXPENSES_REMAINS_COLUMN = "expenses";
 
     /**
      * column index
@@ -90,17 +86,27 @@ public class DatabaseConstraints {
                     .floatColumn(EXPENSE_COLUMN).and()
                     .floatColumn(GOAL_COLUMN).build(),
 
+            // create investment table
+            new TableBuilder.Builder(INVESTMENT_TABLE_NAME)
+                     .integerColumn(ID_COLUMN)
+                     .defineColumnHasPrimaryKey()
+                     .setAutoincrement().and()
+                     .floatColumn(AMOUNT_COLUMN).and()
+                     .textColumn(DATE_COLUMN).and()
+                     .textColumn(DESCRIPTION_COLUMN).build(),
 
-            // create saving table
-            new TableBuilder.Builder(SAVING_TABLE_NAME)
+            //create setting table
+            new TableBuilder.Builder(SETTING_TABLE_NAME)
                     .integerColumn(ID_COLUMN)
                     .defineColumnHasPrimaryKey()
                     .setAutoincrement().and()
-                    .floatColumn(AMOUNT_COLUMN).and()
-                    .textColumn(DATE_COLUMN).and()
-                    .textColumn(DESCRIPTION_COLUMN).build(),
-            // create remains table
-            new TableBuilder.Builder(REMAINS_TABLE_NAME)
+                    .floatColumn(SAVING_RATE_COLUMN).and()
+                    .floatColumn(INVESTMENT_COLUMN).and()
+                    .floatColumn(EXPENSE_COLUMN).and()
+                    .floatColumn(GOAL_COLUMN).build(),
+
+            // create saving table
+            new TableBuilder.Builder(SAVING_TABLE_NAME)
                     .integerColumn(ID_COLUMN)
                     .defineColumnHasPrimaryKey()
                     .setAutoincrement().and()
@@ -109,7 +115,12 @@ public class DatabaseConstraints {
                     .floatColumn(SAVING_REMAINS_COLUMN).and()
                     .floatColumn(GOAL_REMAINS_COLUMN).build()
 
-
+            // create account table
+            new TableBuilder.Builder(ACCOUNT_TABLE_NAME)
+                    .integerColumn(ID_COLUMN)
+                    .defineColumnHasPrimaryKey()
+                    .setAutoincrement().and()
+                    .integerColumn(PIN_COLUMN).build(),
     };
 
 }
