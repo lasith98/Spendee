@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -18,7 +19,9 @@ import lk.sliit.spendee.R;
 
 import lk.sliit.spendee.model.GoalModel;
 
+import lk.sliit.spendee.model.RemainsModel;
 import lk.sliit.spendee.repository.GoalRepository;
+import lk.sliit.spendee.repository.RemainsRepository;
 
 
 import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
@@ -26,6 +29,7 @@ import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
 public class GoalAeActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoalAeActivity :";
     private GoalRepository goalRepository;
+    private RemainsRepository remainsRepository;
     private GoalModel model;
     private EditText amountEditText;
     private EditText descriptionEditText;
@@ -48,6 +52,7 @@ public class GoalAeActivity extends AppCompatActivity implements View.OnClickLis
         descriptionEditText = findViewById(R.id.goalDescriptionEditText);
         dateEditText = findViewById(R.id.goalDateEditText);
         goalRepository = GoalRepository.getInstance(this);
+        remainsRepository = RemainsRepository.getInstance(this);
         model = (GoalModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
         createPopupCalender();
 
@@ -66,12 +71,34 @@ public class GoalAeActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
 
-        if (view.getId() == R.id.incomeSaveButton) {
+        if (view.getId() == R.id.goalSaveButton) {
+            if (amountEditText.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Can't blank or characters in amount  amount", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (dateEditText.getText().toString().isEmpty() || dateEditText.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Can't blank description or date", Toast.LENGTH_LONG).show();
+                return;
+            }
             model.setDate(dateEditText.getText().toString());
             model.setDescription(descriptionEditText.getText().toString());
             model.setAmount(Double.parseDouble(amountEditText.getText().toString()));
             if (model.getId() == null) {
-                goalRepository.save(model);
+                RemainsModel remainsModel = remainsRepository.lastRecode();
+                if (remainsModel == null) {
+                    remainsModel = new RemainsModel();
+                }
+                if (remainsModel.getGoal() - model.getAmount() > 0) {
+                    remainsModel.setGoal(remainsModel.getGoal() - model.getAmount());
+                    remainsRepository.save(remainsModel);
+                    goalRepository.save(model);
+                } else {
+                    Toast.makeText(this, "Can't withdrawal goal remain low", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
             } else {
                 goalRepository.update(model);
             }

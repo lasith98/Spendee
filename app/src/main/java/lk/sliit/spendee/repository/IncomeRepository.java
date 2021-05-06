@@ -1,6 +1,8 @@
 package lk.sliit.spendee.repository;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
@@ -28,5 +30,17 @@ public class IncomeRepository extends Repository<IncomeModel, Long> {
             repository.model = new IncomeModel();
         }
         return repository;
+    }
+
+    public double findTotalIncome() {
+        double total = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT sum(amount) FROM " + INCOME_TABLE_NAME, null);
+        if (cursor.moveToFirst()) {
+            total = cursor.getDouble(0);
+        }
+
+        cursor.close();
+        return total;
     }
 }

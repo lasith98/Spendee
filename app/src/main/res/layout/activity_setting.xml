@@ -65,7 +65,6 @@
             android:background="@drawable/edit_text_shep"
             android:hint="@string/expenseRate"
             android:importantForAutofill="no"
-            android:focusableInTouchMode="false"
             android:inputType="numberDecimal"
             android:padding="12.5dp" />
         <EditText
@@ -76,7 +75,6 @@
             android:background="@drawable/edit_text_shep"
             android:hint="@string/goalRate"
             android:importantForAutofill="no"
-            android:focusableInTouchMode="false"
             android:inputType="numberDecimal"
             android:padding="12.5dp" />
 
