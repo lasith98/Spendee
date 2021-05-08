@@ -36,14 +36,14 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/goalAmountEditText"
+            android:id="@+id/remindMessageEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/edit_text_shep"
             android:hint="@string/message"
             android:importantForAutofill="no"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             android:padding="12.5dp" />
 
         <EditText
@@ -68,25 +68,25 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/goalSaveButton"
+            android:id="@+id/remindAddButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:text="@string/save"
+            android:text="@string/add"
             android:textColor="@color/white"
             android:background="@drawable/save_button"
             tools:ignore="ButtonStyle" />
         <Button
-            android:id="@+id/goalDeleteButton"
+            android:id="@+id/remindCancelButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="30dp"
             android:layout_weight="1"
             android:textColor="@color/white"
-            android:text="@string/delete"
+            android:text="@string/cancel"
             android:background="@drawable/delete_button"
             tools:ignore="ButtonStyle" />
 

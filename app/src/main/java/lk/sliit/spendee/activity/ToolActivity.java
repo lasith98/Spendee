@@ -42,6 +42,8 @@ public class ToolActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.remind:
                 startIntent(RemindActivity.class);
                 break;
+            case R.id.report:
+                startIntent(ReportActivity.class);
         }
 
     }
