@@ -14,10 +14,8 @@ import lk.sliit.spendee.activity.goal.GoalActivity;
 import lk.sliit.spendee.activity.income.IncomeActivity;
 
 import lk.sliit.spendee.activity.investment.InvestmentActivity;
-import lk.sliit.spendee.activity.investment.InvestmentAeActivity;
 
 import lk.sliit.spendee.activity.saving.SavingActivity;
-import lk.sliit.spendee.activity.saving.SavingAeActivity;
 
 /**
  * author: Lasith Hansana
@@ -30,7 +28,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     CardView investmentCard;
     CardView expensesCard;
     CardView goalCard;
-    CardView reportCard;
+    CardView toolCard;
     CardView settingCard;
     CardView exitCard;
 
@@ -43,7 +41,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         investmentCard = findViewById(R.id.investment);
         expensesCard = findViewById(R.id.expenses);
         goalCard = findViewById(R.id.goal);
-        reportCard = findViewById(R.id.report);
+        toolCard = findViewById(R.id.tool);
         settingCard = findViewById(R.id.setting);
         exitCard = findViewById(R.id.exit);
 
@@ -53,7 +51,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         investmentCard.setOnClickListener(this);
         expensesCard.setOnClickListener(this);
         goalCard.setOnClickListener(this);
-        reportCard.setOnClickListener(this);
+        toolCard.setOnClickListener(this);
         settingCard.setOnClickListener(this);
         exitCard.setOnClickListener(this);
 
@@ -79,6 +77,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.saving:
                 startIntent(SavingActivity.class);
+                break;
+            case R.id.tool:
+                startIntent(ToolActivity.class);
                 break;
         }
     }

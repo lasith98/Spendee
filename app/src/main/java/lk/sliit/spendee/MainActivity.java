@@ -50,6 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        text1.requestFocus();
+    }
+
+    @Override
     public void onClick(View view) {
         String one = text1.getText().toString();
         String two = text2.getText().toString();
@@ -71,11 +77,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         } else {
-            if (model.getPin() == Integer.parseInt(pin)) {
-                Intent intent = new Intent(this, DashboardActivity.class);
-                startActivity(intent);
+            if (pin.equals("")) {
+                Toast.makeText(this, "Enter four digits as a pin", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Pin invalid !", Toast.LENGTH_SHORT).show();
+                if (model.getPin() == Integer.parseInt(pin)) {
+                    clear();
+                    Intent intent = new Intent(this, DashboardActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "Pin invalid !", Toast.LENGTH_SHORT).show();
+                }
             }
 
         }
@@ -88,8 +99,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (list.size() == 1) {
             entered = true;
             model = list.get(0);
-        }else{
+        } else {
             model = new AccountModel();
         }
+    }
+
+    private void clear() {
+        text1.setText("");
+        text2.setText("");
+        text3.setText("");
+        text4.setText("");
     }
 }
