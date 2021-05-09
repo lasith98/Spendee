@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import lk.sliit.spendee.R;
 import lk.sliit.spendee.adapter.ExpensesArrayAdapter;
-import lk.sliit.spendee.adapter.GoalArrayAdapter;
 import lk.sliit.spendee.adapter.IncomeArrayAdapter;
 import lk.sliit.spendee.model.ExpensesModel;
 import lk.sliit.spendee.model.RemainsModel;
@@ -24,10 +23,9 @@ import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
 
 public class ExpensesActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private ExpensesRepository expensesRepository;
-    private RemainsRepository remainsRepository;
-    ListView listView;
+    private ListView listView;
     private TextView remainsView;
-
+    private RemainsRepository remainsRepository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +37,6 @@ public class ExpensesActivity extends AppCompatActivity implements View.OnClickL
         listView = findViewById(R.id.expensesListView);
         listView.setOnItemClickListener(this);
         remainsView = findViewById(R.id.expensesRemains);
-
-
     }
 
     @Override
@@ -49,6 +45,7 @@ public class ExpensesActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(EXTRA_OBJECT_NAME, new ExpensesModel());
         startActivity(intent);
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -59,8 +56,6 @@ public class ExpensesActivity extends AppCompatActivity implements View.OnClickL
         remainsView.setText("Remains :" + remainsModel.getExpenses());
         listView.setAdapter(new ExpensesArrayAdapter(this, R.layout.list_tile_layout, expensesRepository.findByAll()));
     }
-
-
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {

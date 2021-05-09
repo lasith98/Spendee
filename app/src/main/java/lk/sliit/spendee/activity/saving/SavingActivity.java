@@ -17,6 +17,7 @@ import lk.sliit.spendee.adapter.SavingArrayAdapter;
 import lk.sliit.spendee.model.IncomeModel;
 import lk.sliit.spendee.model.RemainsModel;
 import lk.sliit.spendee.model.SavingModel;
+import lk.sliit.spendee.repository.GoalRepository;
 import lk.sliit.spendee.repository.IncomeRepository;
 import lk.sliit.spendee.repository.RemainsRepository;
 import lk.sliit.spendee.repository.SavingRepository;
@@ -39,7 +40,7 @@ public class SavingActivity extends AppCompatActivity implements View.OnClickLis
         add.setOnClickListener(this);
         listView = findViewById(R.id.savingListView);
         listView.setOnItemClickListener(this);
-        remainsView = findViewById(R.id.goalRemains);
+        remainsView = findViewById(R.id.savingRemains);
     }
 
     @Override

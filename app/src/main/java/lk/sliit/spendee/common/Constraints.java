@@ -7,4 +7,5 @@ package lk.sliit.spendee.common;
  */
 public class Constraints {
     public static final String EXTRA_OBJECT_NAME = "object";
+    public static final String YEAR_OF_MONTH = "yearOfMonth";
 }

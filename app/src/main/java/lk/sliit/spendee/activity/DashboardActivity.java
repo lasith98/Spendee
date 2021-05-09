@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import lk.sliit.spendee.MainActivity;
 import lk.sliit.spendee.R;
 import lk.sliit.spendee.activity.expenses.ExpensesActivity;
 import lk.sliit.spendee.activity.goal.GoalActivity;
@@ -81,6 +82,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.tool:
                 startIntent(ToolActivity.class);
                 break;
+            case R.id.exit:
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                this.finish();
         }
     }
 

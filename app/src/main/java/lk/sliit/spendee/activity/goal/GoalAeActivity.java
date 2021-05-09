@@ -25,6 +25,7 @@ import lk.sliit.spendee.repository.RemainsRepository;
 
 
 import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
+import static lk.sliit.spendee.util.Util.convertDateSQLIteFormat;
 
 public class GoalAeActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoalAeActivity :";
@@ -125,8 +126,8 @@ public class GoalAeActivity extends AppCompatActivity implements View.OnClickLis
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     GoalAeActivity.this, (view, year, month, dayOfMonth) -> {
                 month = month + 1;
-                String date = dayOfMonth + "/" + month + "/" + year;
-                dateEditText.setText(date);
+                String date = year + "-" + month + "-" + dayOfMonth;
+                dateEditText.setText(convertDateSQLIteFormat(date));
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             datePickerDialog.show();
         });
