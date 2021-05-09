@@ -13,7 +13,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import lk.sliit.spendee.R;
 import lk.sliit.spendee.model.IncomeModel;
@@ -25,6 +28,7 @@ import lk.sliit.spendee.repository.SettingRepository;
 import lk.sliit.spendee.service.IncomeDistributionService;
 
 import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
+import static lk.sliit.spendee.util.Util.convertDateSQLIteFormat;
 
 /**
  * author: Lasith Hansana
@@ -40,7 +44,6 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
     private EditText amountEditText;
     private EditText descriptionEditText;
     private EditText dateEditText;
-
 
 
     @Override
@@ -62,7 +65,6 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
         remainsRepository = RemainsRepository.getInstance(this);
         model = (IncomeModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
         createPopupCalender();
-
 
 
         if (model.getId() == null) {
@@ -143,8 +145,8 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     IncomeAeActivity.this, (view, year, month, dayOfMonth) -> {
                 month = month + 1;
-                String date = dayOfMonth + "/" + month + "/" + year;
-                dateEditText.setText(date);
+                String date = year + "-" + month + "-" + dayOfMonth;
+                dateEditText.setText(convertDateSQLIteFormat(date));
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             datePickerDialog.show();
         });

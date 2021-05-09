@@ -6,6 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.github.mikephil.charting.data.PieEntry;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import lk.sliit.spendee.model.IncomeModel;
 
 import static lk.sliit.spendee.common.DatabaseConstraints.INCOME_TABLE_NAME;
@@ -36,6 +42,18 @@ public class IncomeRepository extends Repository<IncomeModel, Long> {
         double total = 0;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT sum(amount) FROM " + INCOME_TABLE_NAME, null);
+        if (cursor.moveToFirst()) {
+            total = cursor.getDouble(0);
+        }
+
+        cursor.close();
+        return total;
+    }
+
+    public double findYearOfMonthReport(String yearOfMonth) {
+        double total = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT sum(amount) FROM " + INCOME_TABLE_NAME + " WHERE strftime('%Y-%m',date)=?", new String[]{yearOfMonth});
         if (cursor.moveToFirst()) {
             total = cursor.getDouble(0);
         }
