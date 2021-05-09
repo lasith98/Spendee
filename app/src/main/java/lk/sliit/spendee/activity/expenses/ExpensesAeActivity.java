@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,14 +15,16 @@ import java.util.Calendar;
 
 import lk.sliit.spendee.R;
 import lk.sliit.spendee.model.ExpensesModel;
+import lk.sliit.spendee.model.RemainsModel;
 import lk.sliit.spendee.repository.ExpensesRepository;
+import lk.sliit.spendee.repository.RemainsRepository;
 
 import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
-
 
 public class ExpensesAeActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ExpensesAeActivity :";
     private ExpensesRepository expensesRepository;
+    private RemainsRepository remainsRepository;
     private ExpensesModel model;
     private EditText amountEditText;
     private EditText descriptionEditText;
@@ -44,7 +47,8 @@ public class ExpensesAeActivity extends AppCompatActivity implements View.OnClic
         descriptionEditText = findViewById(R.id.expensesDescriptionEditText);
         dateEditText = findViewById(R.id.expensesDateEditText);
         expensesRepository = ExpensesRepository.getInstance(this);
-        model = (ExpensesModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
+        remainsRepository = RemainsRepository.getInstance(this);
+                model = (ExpensesModel) getIntent().getSerializableExtra(EXTRA_OBJECT_NAME);
         createPopupCalender();
 
         if (model.getId() == null) {
@@ -63,11 +67,31 @@ public class ExpensesAeActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
 
         if (view.getId() == R.id.expensesSaveButton) {
+            if (amountEditText.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Can't blank or characters in amount  amount", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (dateEditText.getText().toString().isEmpty() || dateEditText.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Can't blank description or date", Toast.LENGTH_LONG).show();
+                return;
+            }
             model.setDate(dateEditText.getText().toString());
             model.setDescription(descriptionEditText.getText().toString());
             model.setAmount(Double.parseDouble(amountEditText.getText().toString()));
             if (model.getId() == null) {
-                expensesRepository.save(model);
+                RemainsModel remainsModel = remainsRepository.lastRecode();
+                if (remainsModel == null) {
+                    remainsModel = new RemainsModel();
+                }
+                if (remainsModel.getExpenses() - model.getAmount() > 0) {
+                    remainsModel.setExpenses(remainsModel.getExpenses() - model.getAmount());
+                    remainsRepository.save(remainsModel);
+                    expensesRepository.save(model);
+                } else {
+                    Toast.makeText(this, "Can't withdrawal expenses remain low", Toast.LENGTH_LONG).show();
+                    return;
+                }
             } else {
                 expensesRepository.update(model);
             }
