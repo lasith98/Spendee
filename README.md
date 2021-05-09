@@ -17,7 +17,8 @@ We have included four concepts in this mobile application.
     •	Investment
     •	Saving
     •	Goal
-First user click the setting and change the saving rate, investment rate, expenses rate and goal rate by adding percentage values as user want.
+First user click the setting and change the saving rate, investment rate, 
+expenses rate and goal rate by adding percentage values as user want.
 Then user add monthly income amount and select the date and type something in the description box and save it. 
 Then the income will divide in to these four concepts and it show the relevant amount. 
 There is a Tool button. It contain 
