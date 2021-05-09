@@ -31,7 +31,7 @@ import static lk.sliit.spendee.common.Constraints.EXTRA_OBJECT_NAME;
 import static lk.sliit.spendee.util.Util.convertDateSQLIteFormat;
 
 /**
- * author: Lasith Hansana
+ * author: lasith hansana
  * date: 3/19/2021
  * time: 10:32 PM
  */
