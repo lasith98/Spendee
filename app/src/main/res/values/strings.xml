@@ -32,5 +32,11 @@
 
     <string name="star">*</string>
     <string name="AeTitle">%s %s</string>
+    <string name="currency_converter">Converter</string>
+    <string name="remind">Remind</string>
+    <string name="tool">Tool</string>
+    <string name="date_time">Date Time</string>
+    <string name="message">Message</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
