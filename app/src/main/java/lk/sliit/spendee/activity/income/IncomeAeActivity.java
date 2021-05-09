@@ -107,18 +107,20 @@ public class IncomeAeActivity extends AppCompatActivity implements View.OnClickL
                 }
                 IncomeDistributionService incomeDistributionService = new IncomeDistributionService(model.getAmount(), settingModel);
 
-                RemainsModel remainsModel;
-                if (remainsRepository.findByAll().size() == 0) {
+                RemainsModel remainsModel = remainsRepository.lastRecode();
+                if (remainsModel == null) {
                     remainsModel = new RemainsModel();
-                } else {
-                    remainsModel = remainsRepository.lastRecode();
                 }
 
                 remainsModel.setGoal(remainsModel.getGoal() + incomeDistributionService.goalAmount());
                 remainsModel.setSaving(remainsModel.getSaving() + incomeDistributionService.savingAmount());
                 remainsModel.setExpenses(remainsModel.getExpenses() + incomeDistributionService.expensesAmount());
                 remainsModel.setInvestment(remainsModel.getInvestment() + incomeDistributionService.investmentAmount());
-                remainsRepository.save(remainsModel);
+                if (remainsModel.getId() == null) {
+                    remainsRepository.save(remainsModel);
+                } else {
+                    remainsRepository.update(remainsModel);
+                }
             } else {
                 incomeRepository.update(model);
             }
