@@ -25,8 +25,10 @@ There is a Tool button. It contain
     •	Remind
     •	Report
 When user click the Converter button user can convert his amount, Sri Lankan Rupees in to Dollars. 
-If the user wants a reminder on specific date and time user can click Remind button and select the date time option and save the message user want remind.
+If the user wants a reminder on specific date and time user can click Remind button and
+select the date time option and save the message user want remind.
 So the remind will appears on the users screen on the specified day.
-When user click Report button, user can see his amount of Investments, Savings, Expenses, and goal in the previous month. It can be viewed by a column chart.
+When user click Report button, user can see his amount of Investments, Savings, Expenses,
+and goal in the previous month. It can be viewed by a column chart.
 
 </pre>
