@@ -74,7 +74,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 model.setPin(Integer.parseInt(pin));
                 accountRepository.save(model);
                 Intent intent = new Intent(this, DashboardActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                this.finish();
             }
         } else {
             if (pin.equals("")) {
@@ -109,5 +111,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         text2.setText("");
         text3.setText("");
         text4.setText("");
+        text1.requestFocus();
     }
 }

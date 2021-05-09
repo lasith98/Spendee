@@ -45,7 +45,7 @@ public class ReportActivity extends AppCompatActivity {
         SavingRepository savingRepository = SavingRepository.getInstance(this);
         InvestmentRepository investmentRepository = InvestmentRepository.getInstance(this);
         String yearOfMonth = getIntent().getStringExtra(YEAR_OF_MONTH);
-        monthOfYearTextView.setText("Year of month : "+yearOfMonth);
+        monthOfYearTextView.setText("Month of the year : "+yearOfMonth);
         List<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(savingRepository.findYearOfMonthReport(yearOfMonth), "Saving"));
         entries.add(new PieEntry(expensesRepository.findYearOfMonthReport(yearOfMonth), "Expenses"));
