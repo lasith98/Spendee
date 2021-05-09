@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 import lk.sliit.spendee.R;
 import lk.sliit.spendee.activity.goal.GoalAeActivity;
@@ -46,8 +47,8 @@ public class GoalArrayAdapter extends ArrayAdapter<GoalModel> implements View.On
         ImageView aeButton = convertView.findViewById(R.id.editButton);
         aeButton.setOnClickListener(this);
 
-        amountTextView.setText(String.valueOf(getItem(position).getAmount()));
-        descriptionTextView.setText(getItem(position).getDescription());
+        amountTextView.setText(String.valueOf(Objects.requireNonNull(getItem(position)).getAmount()));
+        descriptionTextView.setText(Objects.requireNonNull(getItem(position)).getDescription());
 
         return convertView;
     }

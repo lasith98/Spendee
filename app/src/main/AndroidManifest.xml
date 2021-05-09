@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Spendee">
-        <activity android:name=".activity.NotificationActivity"></activity>
-        <activity android:name=".activity.CurrencyConverterActivity"></activity>
+        <activity android:name=".activity.ReportActivity"></activity>
+        <activity android:name=".activity.remind.RemindActivity" />
+        <activity android:name=".activity.ToolActivity" />
+        <activity android:name=".activity.CurrencyConverterActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.investment.InvestmentAeActivity" />
         <activity android:name=".activity.investment.InvestmentActivity" />
@@ -30,6 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".receiver.RemindReceiver" />
     </application>
 
 </manifest>
