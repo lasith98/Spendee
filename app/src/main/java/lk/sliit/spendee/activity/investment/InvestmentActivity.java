@@ -35,7 +35,6 @@ public class InvestmentActivity extends AppCompatActivity implements View.OnClic
         add.setOnClickListener(this);
         listView = findViewById(R.id.investmentListView);
         listView.setOnItemClickListener(this);
-        remainsView = findViewById(R.id.investmentRemains);
 
     }
 
