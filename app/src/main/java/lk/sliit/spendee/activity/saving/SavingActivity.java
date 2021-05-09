@@ -60,7 +60,6 @@ public class SavingActivity extends AppCompatActivity implements View.OnClickLis
         remainsView.setText("Remains :" + remainsModel.getSaving());
         listView.setAdapter(new SavingArrayAdapter(this, R.layout.list_tile_layout, savingRepository.findByAll()));
     }
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Intent intent = new Intent(this, SavingAeActivity.class);
