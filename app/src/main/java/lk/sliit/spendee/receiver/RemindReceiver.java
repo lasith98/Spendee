@@ -16,11 +16,6 @@ import lk.sliit.spendee.MainActivity;
 import lk.sliit.spendee.R;
 
 
-/**
- * author: Lasith Hansana
- * date: 5/9/2021
- * time: 12:07 AM
- */
 public class RemindReceiver extends BroadcastReceiver {
     private static final String CHANNEL_ID = "REMIND_CHANNEL";
 

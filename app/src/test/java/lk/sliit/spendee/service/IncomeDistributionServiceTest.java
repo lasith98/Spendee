@@ -53,5 +53,4 @@ public class IncomeDistributionServiceTest {
         Assert.assertThat(150.0, is(incomeDistributionService.savingAmount()));
     }
 
-
 }
